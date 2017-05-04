@@ -164,6 +164,8 @@ if ($_SESSION[$guid]['systemSettingsSet'] == false) {
 			<link rel="stylesheet" href="<?php echo $_SESSION[$guid]['absoluteURL'] ?>/lib/thickbox/thickbox.css" type="text/css" media="screen" />
 			<script type="text/javascript" src="<?php echo $_SESSION[$guid]['absoluteURL'] ?>/lib/jquery-autosize/jquery.autosize.min.js"></script>
 			<script type="text/javascript" src="<?php echo $_SESSION[$guid]['absoluteURL'] ?>/lib/jquery-sessionTimeout/jquery.sessionTimeout.min.js"></script>
+            <script type="text/javascript" src="<?php echo $_SESSION[$guid]['absoluteURL'] ?>/lib/jquery-timepicker/jquery.timepicker.min.js"></script>
+            <link rel="stylesheet" href="<?php echo $_SESSION[$guid]['absoluteURL'] ?>/lib/jquery-timepicker/jquery.timepicker.css" type="text/css" media="screen" />
 			<?php
             if (isset($_SESSION[$guid]['username'])) {
                 $sessionDuration = getSettingByScope($connection2, 'System', 'sessionDuration');
@@ -253,8 +255,6 @@ if ($_SESSION[$guid]['systemSettingsSet'] == false) {
                 }
             }
 
-            //Set timezone from session variable
-            date_default_timezone_set($_SESSION[$guid]['timezone']);
 
             //Initialise tinymce
             ?>
@@ -268,7 +268,7 @@ if ($_SESSION[$guid]['systemSettingsSet'] == false) {
 				plugins: 'table, template, paste, visualchars, link, template, textcolor, hr, charmap, fullscreen, media',
 			 	statusbar: false,
 			 	valid_elements: '<?php echo getSettingByScope($connection2, 'System', 'allowableHTML') ?>',
-			 	apply_source_formatting : true,
+                apply_source_formatting : true,
 			 	browser_spellcheck: true,
 			 	convert_urls: false,
 			 	relative_urls: false,
@@ -646,7 +646,7 @@ if ($_SESSION[$guid]['systemSettingsSet'] == false) {
 					<div id="footer">
 						<?php echo __($guid, 'Powered by') ?> <a target='_blank' href="https://gibbonedu.org">Gibbon</a> v<?php echo $version ?><?php if ($_SESSION[$guid]['cuttingEdgeCode'] == 'Y') { echo 'dev';} ?> | &#169; <a target='_blank' href="http://rossparker.org">Ross Parker</a> 2010-<?php echo date('Y') ?><br/>
 						<span style='font-size: 90%; '>
-							<?php echo __($guid, 'Created under the') ?> <a target='_blank' href="https://www.gnu.org/licenses/gpl.html">GNU GPL</a> at <a target='_blank' href='http://www.ichk.edu.hk'>ICHK</a> | <a target='_blank' href='https://gibbonedu.org/contribute/'><?php echo __($guid, 'Credits'); ?></a><br/>
+							<?php echo __($guid, 'Created under the') ?> <a target='_blank' href="https://www.gnu.org/licenses/gpl.html">GNU GPL</a> at <a target='_blank' href='http://www.ichk.edu.hk'>ICHK</a> | <a target='_blank' href='https://gibbonedu.org/about/#ourTeam'><?php echo __($guid, 'Credits'); ?></a><br/>
 							<?php
                                 $seperator = false;
 								$thirdLine = false;
